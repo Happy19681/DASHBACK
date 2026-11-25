@@ -13,3 +13,4 @@ if not mongo_uri:
 client = MongoClient(mongo_uri, serverSelectionTimeoutMS=3000)
 db = client[os.getenv("MONGO_DATABASE", "Dashboard-DB")]
 collection = db[os.getenv("MONGO_COLLECTION", "Transactions")]
+page_records = db[os.getenv("PAGE_RECORDS_COLLECTION", "DashboardPageRecords")]

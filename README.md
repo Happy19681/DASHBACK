@@ -1,6 +1,6 @@
 # Dashboard API
 
-FastAPI service used by the dashboard's transaction table and metric cards.
+FastAPI service for the dashboard overview, transactions, product revenue, and CRUD-backed sidebar pages.
 
 ## Start
 
@@ -42,6 +42,13 @@ The API stores dashboard records in the `Dashboard-DB.Transactions` collection b
 | `DELETE` | `/api/transactions/bulk` | Delete `{ "ids": ["..."] }` |
 | `GET` | `/api/dashboard/metrics?period=Daily&date=2026-11-18` | Period metrics and chart buckets |
 | `GET` | `/api/dashboard/revenue-breakdown?start=2026-11-01&end=2026-11-18` | Revenue grouped by product for the chart date range |
+| `GET` | `/api/resources/{resource}` | Search and list records for a dashboard page |
+| `POST` | `/api/resources/{resource}` | Create a page record |
+| `GET` | `/api/resources/{resource}/{id}` | Read one page record |
+| `PATCH` | `/api/resources/{resource}/{id}` | Update a page record |
+| `DELETE` | `/api/resources/{resource}/{id}` | Delete a page record |
 | `GET` | `/health` | Service health |
+
+Page resource names are `products`, `reports`, `messages`, `team-performance`, `campaigns`, `customers`, `channels`, `orders`, `roles`, `billing`, `integrations`, `support`, `help-center`, and `settings`. These records are stored in `DashboardPageRecords` by default; `PAGE_RECORDS_COLLECTION` can override the collection name.
 
 Transaction create fields are `customer`, `product`, `status`, `quantity`, `unitPrice`, and optional ISO `date`. Status is `Success`, `Pending`, or `Refunded`. Revenue and product breakdowns count successful transactions. The conversion card reports successful transactions divided by all transactions because this dashboard does not yet collect website visits. Metrics compare with the immediately preceding period of the same length; the sales chart compares monthly revenue with the prior year.

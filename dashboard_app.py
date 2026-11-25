@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pymongo.errors import PyMongoError
 
 from dashboard_database import client
-from routers import dashboard_overview, recent_transactions
+from routers import dashboard_overview, dashboard_pages, recent_transactions
 
 app = FastAPI(title="Dashboard API", version="1.0.0")
 allowed_origins = [
@@ -27,6 +27,7 @@ app.add_middleware(
 
 app.include_router(recent_transactions.router, prefix="/api")
 app.include_router(dashboard_overview.router, prefix="/api")
+app.include_router(dashboard_pages.router, prefix="/api")
 
 @app.get("/")
 def home():

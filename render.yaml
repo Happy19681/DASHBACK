@@ -10,7 +10,7 @@ services:
       - key: MONGO_URI
         sync: false
       - key: DASHBOARD_ORIGINS
-        value: http://localhost:5173,http://127.0.0.1:5173
+        value: http://localhost:5173,http://127.0.0.1:5173,https://dashfront-6f6c.onrender.com
       - key: MONGO_DATABASE
         value: Dashboard-DB
       - key: MONGO_COLLECTION
