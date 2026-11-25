@@ -4,7 +4,7 @@ FastAPI service used by the dashboard's transaction table and metric cards.
 
 ## Start
 
-Put `MONGO_URI` in `Api/.env`, then run from this folder:
+Put `MONGO_URI` in this repository's `.env`, then run from this folder:
 
 ```powershell
 uv run fastapi dev dashboard_app.py
@@ -18,7 +18,7 @@ For deployment, set `VITE_API_URL` to the deployed API's `/api` URL and set `DAS
 
 The API includes a Dockerfile and a root-level `render.yaml` Blueprint for Render. The Blueprint uses Render's free web-service plan and sets port `10000` and `/health` as the health check. Render's free services can spin down while idle. See [Render's free instance details](https://render.com/docs/free).
 
-To create the Render service, push this repository to a Git host, choose **New → Blueprint** in Render, and connect the repository. Render will ask for `MONGO_URI`; enter it in Render's environment prompt, not in this repository. Confirm MongoDB network access allows the deployed service to connect. The blueprint builds from `Api/Dockerfile`.
+To create the Render service, push this repository to a Git host, choose **New → Blueprint** in Render, and connect the repository. Render will ask for `MONGO_URI`; enter it in Render's environment prompt, not in this repository. Confirm MongoDB network access allows the deployed service to connect. The blueprint builds from the repository-root `Dockerfile`.
 
 The service environment is configured with these values; do not put production secrets in source files:
 
