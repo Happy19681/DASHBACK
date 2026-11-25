@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: dashboard-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Api/Dockerfile
+    dockerContext: ./Api
+    healthCheckPath: /health
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: DASHBOARD_ORIGINS
+        value: http://localhost:5173,http://127.0.0.1:5173
+      - key: MONGO_DATABASE
+        value: Dashboard-DB
+      - key: MONGO_COLLECTION
+        value: Transactions
+      - key: PORT
+        value: "10000"
